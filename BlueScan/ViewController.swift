@@ -11,6 +11,7 @@ import CoreBluetooth
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    let CHARACTERISTIC_UUID = "FFF3"
     private var centralManager: CBCentralManager?
     private var discoveredPerip: CBPeripheral?
     private var bluetoothOn = false
@@ -38,7 +39,14 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     @IBAction func startTap(_ sender: Any) {
-        //
+        if let send = sender as? UIButton {
+            if send.isSelected {
+                bluetoothOn = false
+                send.isSelected = !send.isSelected
+            } else {
+                send.isSelected = !send.isSelected
+            }
+        }
         if !bluetoothOn {
             print("bluetooth off")
             return
@@ -62,8 +70,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         if let data = advertisementData["kCBAdvDataLocalName"] {
             tLog(msg: "Discovered \(data), RSSI \(RSSI)")
         } else {
-            for (x,y) in advertisementData {
-                tLog(msg: "Discovered \(y), RSSI \(RSSI)")
+            tLog(msg: "No peripherals found")
+            for (x,_) in advertisementData {
+                tLog(msg: "Key \(x)")
             }
             
         }
@@ -102,11 +111,20 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         for characteristic in service.characteristics! {
             tLog(msg: "Discovered service: \(characteristic.description)")
+            if characteristic.uuid == CBUUID(string: CHARACTERISTIC_UUID) {
+                peripheral.setNotifyValue(true, for: characteristic)
+            }
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        //
+        if let err = error {
+            tLog(msg: err.localizedDescription)
+            return
+        } else {
+            let str = String(data: characteristic.value!, encoding: .utf8)
+            valueLbl.text = str!
+        }
     }
 
 }
