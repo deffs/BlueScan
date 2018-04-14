@@ -12,6 +12,7 @@
 		CA47648320829A7D00C8DC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA47648120829A7D00C8DC79 /* Main.storyboard */; };
 		CA47648520829A7F00C8DC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA47648420829A7F00C8DC79 /* Assets.xcassets */; };
 		CA47648820829A7F00C8DC79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA47648620829A7F00C8DC79 /* LaunchScreen.storyboard */; };
+		CA47649120829AAA00C8DC79 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA47649020829AAA00C8DC79 /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CA47648420829A7F00C8DC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA47648720829A7F00C8DC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA47648920829A7F00C8DC79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA47649020829AAA00C8DC79 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA47649120829AAA00C8DC79 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				CA47647C20829A7D00C8DC79 /* BlueScan */,
 				CA47647B20829A7D00C8DC79 /* Products */,
+				CA47648F20829AAA00C8DC79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				CA47648920829A7F00C8DC79 /* Info.plist */,
 			);
 			path = BlueScan;
+			sourceTree = "<group>";
+		};
+		CA47648F20829AAA00C8DC79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA47649020829AAA00C8DC79 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PST2WR7437;
 				INFOPLIST_FILE = BlueScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PST2WR7437;
 				INFOPLIST_FILE = BlueScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
